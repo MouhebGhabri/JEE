@@ -11,8 +11,8 @@ public class ClientRepositoryImpl implements ClientRepositoryCustom{
     private EntityManager entityManager;
     @Override
     public Client getClientByNom(String nom) {
-        Query query=entityManager.createNamedQuery("SELECT C.* FROM Client c"+
-                "Where C.nom LIKE ?",Client.class);
+        Query query=entityManager.createNamedQuery("SELECT c.* FROM Client c"+
+                "Where c.nom LIKE ?",Client.class);
         query.setParameter(1,nom+"%");
 
         return (Client) query.getSingleResult();
