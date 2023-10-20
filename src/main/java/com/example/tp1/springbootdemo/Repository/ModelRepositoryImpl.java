@@ -1,6 +1,6 @@
 package com.example.tp1.springbootdemo.Repository;
 
-import com.example.tp1.springbootdemo.Entity.Model;
+import com.example.tp1.springbootdemo.Entity.Modele;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -10,10 +10,10 @@ public class ModelRepositoryImpl implements ModelRepositoryCustom{
     @PersistenceContext
     private EntityManager entityManager;
     @Transactional
-    public Model getModelByNom(String nom){
+    public Modele getModelByNom(String nom){
         Query query=entityManager.createNativeQuery("SELECT m.* FROM Model m"+
-                "WHERE m.nom LIKE ?",Model.class);
+                "WHERE m.nom LIKE ?", Modele.class);
         query.setParameter(1,nom+"%");
-        return (Model) query.getSingleResult();
+        return (Modele) query.getSingleResult();
     }
 }
